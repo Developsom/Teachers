@@ -1,6 +1,7 @@
 package com.example.teachers.service;
 
 import com.example.teachers.dto.TeacherDto;
+import com.example.teachers.exception.ResourceNotFoundException;
 import com.example.teachers.model.Teacher;
 import com.example.teachers.repository.TeacherRepository;
 import org.springframework.stereotype.Service;
@@ -24,5 +25,10 @@ public class TeacherService {
         repos.save(t);
 
         return t.getId();
+    }
+
+    public TeacherDto getTeacher(Long id) {
+        Teacher t = repos.findById(id).orElseThrow(() -> new ResourceNotFoundException("Teacher not found"));///Lambda constructie
+
     }
 }
