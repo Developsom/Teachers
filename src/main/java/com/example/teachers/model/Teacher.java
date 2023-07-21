@@ -15,9 +15,9 @@ public class Teacher {
     @GeneratedValue
     Long id;
 
-    String firstName;
-    String lastName;
-    LocalDate dob; //LocalDate is used to save dates
+    private String firstName;
+    private String lastName;
+    private LocalDate dob; //LocalDate is used to save dates
 
     public Long getId() {
         return id;
