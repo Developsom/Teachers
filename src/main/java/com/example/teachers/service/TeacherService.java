@@ -30,5 +30,14 @@ public class TeacherService {
     public TeacherDto getTeacher(Long id) {
         Teacher t = repos.findById(id).orElseThrow(() -> new ResourceNotFoundException("Teacher not found"));///Lambda constructie
 
+        // mapping van Entity naar dto
+        TeacherDto tdto = new TeacherDto();
+        tdto.id = t.getId();
+        tdto.firstName = t.getFirstName();
+        tdto.lastName = t.getLastName();
+        tdto.dob = t.getDob();
+
+        return tdto;
+
     }
 }

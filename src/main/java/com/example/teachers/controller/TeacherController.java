@@ -34,6 +34,12 @@ public class TeacherController {
         return ResponseEntity.ok(repos.findAll());
     }
 */
+    @GetMapping("/{id}")
+    public ResponseEntity<TeacherDto> getTeacher(@PathVariable Long id) {
+        TeacherDto tdto = service.getTeacher(id);
+
+        return ResponseEntity.ok(tdto);
+    }
 
     @PostMapping ////////ENDPOINT             ////Hieronder komt de dto binnen        /BindingResult geeft ons het object waarin we kunnen zien waar het niet goed is gegaan
     public ResponseEntity<Object> createTeacher(@Valid @RequestBody TeacherDto tdto, BindingResult br){ //'@Valid annotatie forceert de controller om de validatie in de dto uit te voeren
@@ -64,4 +70,3 @@ public class TeacherController {
 
     }*/
 }
-//Voila
