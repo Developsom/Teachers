@@ -1,6 +1,4 @@
 package com.example.teachers.controller;
-
-
 import com.example.teachers.dto.TeacherDto;
 import com.example.teachers.model.Teacher;
 import com.example.teachers.repository.TeacherRepository;
@@ -17,29 +15,58 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 @RequestMapping("teachers") //Routepath for all the endpoints
 public class TeacherController {
 
+
+
+
     private final TeacherService service;
+
+
+
+
 
     public TeacherController(TeacherService service) { ///Teacher toegevoegd en afhankelijk gemaakt van de service
         this.service = service;  /////Service object komt binnen en wordt bewaard in het veld 'service'
     }
 
-/*
+
+
+
     @GetMapping
-    public ResponseEntity<Iterable<Teacher>> getTeachers() {
-        return ResponseEntity.ok(repos.findAll());
+    public ResponseEntity<List<TeacherDto>> getAllTeachers() {
+        List<TeacherDto> teacherDtos = service.getAllTeachers();
+        return ResponseEntity.ok(teacherDtos);
     }
-*/
+
+
+
+
+
+
+
+
+
+
+
     @GetMapping("/{id}")
     public ResponseEntity<TeacherDto> getTeacher(@PathVariable Long id) {
         TeacherDto tdto = service.getTeacher(id);
 
         return ResponseEntity.ok(tdto);
     }
+
+
+
+
+
+
+
+
 
     @PostMapping ////////ENDPOINT             ////Hieronder komt de dto binnen        /BindingResult geeft ons het object waarin we kunnen zien waar het niet goed is gegaan
     public ResponseEntity<Object> createTeacher(@Valid @RequestBody TeacherDto tdto, BindingResult br){ //'@Valid annotatie forceert de controller om de validatie in de dto uit te voeren
@@ -69,4 +96,11 @@ public class TeacherController {
 
 
     }*/
+
+    /*
+    @GetMapping
+    public ResponseEntity<Iterable<Teacher>> getTeachers() {
+        return ResponseEntity.ok(repos.findAll());
+    }
+*/
 }

@@ -16,5 +16,7 @@ public class TeacherDto {
 
     @Past
     public LocalDate dob;
+
+    public int salary;
     public Long id;
 }

@@ -14,10 +14,14 @@ public class Teacher {
     @Id
     @GeneratedValue
     private Long id;
-
     private String firstName;
     private String lastName;
     private LocalDate dob; //LocalDate is used to save dates
+    private int salary;
+
+
+
+
 
     public Long getId() {
         return id;
@@ -49,5 +53,13 @@ public class Teacher {
 
     public void setDob(LocalDate dob) {
         this.dob = dob;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
     }
 }
